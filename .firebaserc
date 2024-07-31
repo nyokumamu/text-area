@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "test-area-b79d1"
-  }
+    "default": "test-area-b79d1",
+    "prod": "test-area-b79d1"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

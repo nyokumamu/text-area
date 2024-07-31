@@ -22,3 +22,21 @@ $('#download')
   $(this).attr('download' ,fileName);
   $(this).attr('href' ,url);
 });
+
+$(document).ready(function() {
+  // URLからパラメータを取得してtextareaに設定
+  var urlParams = new URLSearchParams(window.location.search);
+  var memoContent = urlParams.get('memo');
+  if (memoContent) {
+    $('textarea[name="memo"]').val(LZString.decompressFromEncodedURIComponent(memoContent));
+  }
+
+  // リンクを生成するボタンのクリックイベント
+  $('#generate-link').on('click', function() {
+    var memoText = $('textarea[name="memo"]').val();
+    var compressedText = LZString.compressToEncodedURIComponent(memoText);
+    var link = `${window.location.origin}${window.location.pathname}?memo=${compressedText}`;
+    window.location.href = link; // 生成したリンクにリダイレクト
+  });
+});
+
